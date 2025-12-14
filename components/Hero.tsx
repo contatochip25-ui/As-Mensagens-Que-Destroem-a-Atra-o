@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertTriangle, ChevronDown, Clock, Eye } from 'lucide-react';
+import { ChevronDown, Clock, Eye } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   return (

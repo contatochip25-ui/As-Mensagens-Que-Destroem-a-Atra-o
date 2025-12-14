@@ -6,7 +6,6 @@ import { Testimonials } from './components/Testimonials';
 import { Offer } from './components/Offer';
 import { FAQ } from './components/FAQ';
 import { SocialProofPopup } from './components/SocialProofPopup';
-import { ArrowDown } from 'lucide-react';
 
 export default function App() {
   const scrollToOffer = () => {
