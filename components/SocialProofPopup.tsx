@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle2, X } from 'lucide-react';
 
 const recentBuyers = [
@@ -19,36 +19,51 @@ const recentBuyers = [
 export const SocialProofPopup: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [buyer, setBuyer] = useState(recentBuyers[0]);
-  const [isDismissed, setIsDismissed] = useState(false);
+  
+  // Usamos useRef para manter o estado "dismissed" atualizado dentro dos timeouts e intervalos
+  // sem depender de closures antigas que causariam bugs
+  const isDismissedRef = useRef(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    // Initial delay before first popup
-    const initialTimeout = setTimeout(() => {
-      triggerPopup();
-    }, 4000);
+    const showPopup = () => {
+      // Se o usuário fechou, cancela tudo e não faz nada
+      if (isDismissedRef.current) return;
 
-    return () => clearTimeout(initialTimeout);
+      // Escolhe um comprador aleatório
+      const randomBuyer = recentBuyers[Math.floor(Math.random() * recentBuyers.length)];
+      setBuyer(randomBuyer);
+      setIsVisible(true);
+
+      // Agenda o desaparecimento
+      timeoutRef.current = setTimeout(() => {
+        setIsVisible(false);
+        
+        // Se ainda não foi fechado manualmente, agenda a próxima aparição
+        if (!isDismissedRef.current) {
+          const nextDelay = Math.floor(Math.random() * 12000) + 8000; // 8 a 20 segundos
+          timeoutRef.current = setTimeout(showPopup, nextDelay);
+        }
+      }, 5000);
+    };
+
+    // Primeira aparição após 4 segundos
+    const initialDelay = setTimeout(showPopup, 4000);
+
+    return () => {
+      clearTimeout(initialDelay);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
   }, []);
 
-  const triggerPopup = () => {
-    if (isDismissed) return;
-
-    // Pick a random buyer
-    const randomBuyer = recentBuyers[Math.floor(Math.random() * recentBuyers.length)];
-    setBuyer(randomBuyer);
-    setIsVisible(true);
-
-    // Hide after 5 seconds
-    setTimeout(() => {
-      setIsVisible(false);
-      
-      // Schedule next popup (random time between 8 and 20 seconds)
-      const nextDelay = Math.floor(Math.random() * 12000) + 8000;
-      setTimeout(triggerPopup, nextDelay);
-    }, 5000);
+  const handleDismiss = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsVisible(false);
+    isDismissedRef.current = true; // Marca como fechado permanentemente
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
   };
 
-  if (isDismissed) return null;
+  if (isDismissedRef.current && !isVisible) return null;
 
   return (
     <div 
@@ -60,8 +75,9 @@ export const SocialProofPopup: React.FC = () => {
         
         {/* Close Button (subtle) */}
         <button 
-          onClick={(e) => { e.stopPropagation(); setIsDismissed(true); setIsVisible(false); }}
-          className="absolute top-2 right-2 text-slate-300 hover:text-slate-500 transition-colors"
+          onClick={handleDismiss}
+          className="absolute top-2 right-2 text-slate-300 hover:text-slate-500 transition-colors cursor-pointer p-1"
+          aria-label="Fechar notificação"
         >
           <X size={14} />
         </button>
