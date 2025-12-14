@@ -5,6 +5,7 @@ import { InsightSolution } from './components/InsightSolution';
 import { Testimonials } from './components/Testimonials';
 import { Offer } from './components/Offer';
 import { FAQ } from './components/FAQ';
+import { SocialProofPopup } from './components/SocialProofPopup';
 import { ArrowDown } from 'lucide-react';
 
 export default function App() {
@@ -20,6 +21,9 @@ export default function App() {
       <Testimonials />
       <Offer />
       <FAQ />
+
+      {/* Social Proof Notifications */}
+      <SocialProofPopup />
 
       {/* Final Call To Action */}
       <section className="py-20 px-4 bg-brand-dark text-white text-center">
