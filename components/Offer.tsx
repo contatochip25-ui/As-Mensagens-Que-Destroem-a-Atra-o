@@ -67,10 +67,15 @@ export const Offer: React.FC = () => {
                 Pagamento Único • Acesso Vitalício
               </p>
 
-              <button className="w-full md:w-auto bg-green-600 hover:bg-green-500 text-white text-xl md:text-2xl font-black py-5 px-10 rounded-xl shadow-xl transition-transform hover:scale-105 flex items-center justify-center gap-3 group">
+              <a 
+                href="https://pay.kiwify.com.br/KJG9ufa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full md:w-auto bg-green-600 hover:bg-green-500 text-white text-xl md:text-2xl font-black py-5 px-10 rounded-xl shadow-xl transition-transform hover:scale-105 flex items-center justify-center gap-3 group text-center no-underline"
+              >
                 QUERO ACESSO IMEDIATO
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              </a>
               
               <p className="mt-4 text-xs text-slate-400 flex items-center gap-1">
                 <Lock size={12} /> Compra 100% Segura e Criptografada
