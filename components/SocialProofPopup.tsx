@@ -20,10 +20,10 @@ export const SocialProofPopup: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [buyer, setBuyer] = useState(recentBuyers[0]);
   
-  // Usamos useRef para manter o estado "dismissed" atualizado dentro dos timeouts e intervalos
-  // sem depender de closures antigas que causariam bugs
+  // Usamos 'any' aqui para garantir compatibilidade total entre ambientes de servidor (Node)
+  // e navegador durante o processo de build da Vercel, evitando erros de tipagem.
   const isDismissedRef = useRef(false);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const timeoutRef = useRef<any>(null);
 
   useEffect(() => {
     const showPopup = () => {
