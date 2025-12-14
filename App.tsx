@@ -45,16 +45,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Sticky Mobile CTA */}
-      <div className="fixed bottom-0 left-0 w-full p-4 bg-white border-t border-slate-200 md:hidden z-50 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
-        <button 
-          onClick={scrollToOffer}
-          className="w-full bg-green-600 text-white font-bold py-3 rounded-lg shadow-md flex items-center justify-center gap-2"
-        >
-          Quero Parar de Sofrer <ArrowDown size={18} />
-        </button>
-      </div>
-
       <footer className="bg-slate-900 text-slate-400 py-8 text-center text-xs">
         <p>&copy; {new Date().getFullYear()} Magnetic Communications. Todos os direitos reservados.</p>
         <p className="mt-2">Este site não faz parte do site do Facebook ou Facebook Inc.<br/>Além disso, este site NÃO é endossado pelo Facebook de forma alguma.</p>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrainCircuit, MessageCircle, ShieldCheck, Zap } from 'lucide-react';
+import { BrainCircuit, MessageCircle, ShieldCheck, Zap, ArrowDown } from 'lucide-react';
 
 export const InsightSolution: React.FC = () => {
   return (
@@ -30,7 +30,7 @@ export const InsightSolution: React.FC = () => {
           </h1>
           <p className="text-center text-slate-500 mb-10 text-lg">O Guia Digital Definitivo para Recuperar seu Poder</p>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2 mb-10">
             <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
               <div className="flex items-center gap-3 mb-3">
                 <div className="bg-blue-100 p-2 rounded-lg text-blue-600"><BrainCircuit size={24} /></div>
@@ -62,6 +62,16 @@ export const InsightSolution: React.FC = () => {
               </div>
               <p className="text-sm text-slate-600">Checklist prático: Decisão clara em 30 segundos, sem dúvidas.</p>
             </div>
+          </div>
+
+          <div className="text-center">
+            <button
+              onClick={() => document.getElementById('offer')?.scrollIntoView({ behavior: 'smooth' })}
+              className="w-full md:w-auto inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-brand-accent rounded-lg hover:bg-red-600 transition-all hover:scale-105 shadow-lg gap-2 group"
+            >
+              QUERO PARAR DE ERRAR NAS MENSAGENS
+              <ArrowDown className="group-hover:translate-y-1 transition-transform" />
+            </button>
           </div>
         </div>
       </div>

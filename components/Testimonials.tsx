@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, Quote } from 'lucide-react';
+import { Star, Quote, ArrowDown } from 'lucide-react';
 import { testimonials } from '../data';
 
 export const Testimonials: React.FC = () => {
@@ -37,8 +37,16 @@ export const Testimonials: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-12 text-center space-y-8">
           <p className="text-slate-400 text-sm">Mais de 3.400 alunas já aplicaram este método.</p>
+          
+          <button
+            onClick={() => document.getElementById('offer')?.scrollIntoView({ behavior: 'smooth' })}
+            className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-brand-dark bg-brand-gold rounded-full hover:bg-amber-300 transition-all hover:scale-105 shadow-[0_0_20px_rgba(251,191,36,0.3)] gap-2 group"
+          >
+            QUERO TER ESSES RESULTADOS
+            <ArrowDown className="group-hover:translate-y-1 transition-transform" />
+          </button>
         </div>
       </div>
     </section>
