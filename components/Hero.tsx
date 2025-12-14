@@ -16,7 +16,7 @@ export const Hero: React.FC = () => {
           Atenção: Apenas para quem quer recuperar o controle
         </div>
 
-        <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-6 tracking-tight text-shadow-sm">
+        <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-6 tracking-tight drop-shadow-md">
           Essas 3 Mensagens <span className="text-brand-accent bg-white/5 px-2">Matam a Atração</span> em Segundos
           <span className="block text-xl md:text-3xl mt-4 font-normal text-slate-300 italic">
             (E você provavelmente mandou uma hoje)

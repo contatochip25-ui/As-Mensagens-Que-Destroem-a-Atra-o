@@ -55,7 +55,7 @@ export default function App() {
         </button>
       </div>
 
-      <footer className="bg-slate-900 text-slate-500 py-8 text-center text-xs">
+      <footer className="bg-slate-900 text-slate-400 py-8 text-center text-xs">
         <p>&copy; {new Date().getFullYear()} Magnetic Communications. Todos os direitos reservados.</p>
         <p className="mt-2">Este site não faz parte do site do Facebook ou Facebook Inc.<br/>Além disso, este site NÃO é endossado pelo Facebook de forma alguma.</p>
       </footer>
